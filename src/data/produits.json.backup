@@ -1,0 +1,50 @@
+[
+  {
+    "id": "sandales-beiges-01",
+    "nom": "Sandales à talons beiges",
+    "categorie": "chaussures",
+    "prix": 12000,
+    "description": "De jolies sandales élégantes pour compléter vos tenues.",
+    "images": ["/images/sandales-beiges.webp"],
+    "tailles": ["36", "37", "38", "39", "40"],
+    "couleurs": ["Beige", "Noir"],
+    "disponible": true,
+    "nouveaute": true
+  },
+  {
+    "id": "voile-mousseline-01",
+    "nom": "Voile en mousseline",
+    "categorie": "voiles",
+    "prix": 3000,
+    "description": "Un voile léger et élégant pour votre quotidien.",
+    "images": ["/images/voile-mousseline.webp"],
+    "tailles": [],
+    "couleurs": ["Rose", "Beige", "Noir"],
+    "disponible": true,
+    "nouveaute": true
+  },
+  {
+    "id": "pagne-imprime-01",
+    "nom": "Pagne imprimé",
+    "categorie": "pagnes",
+    "prix": 10000,
+    "description": "Un joli pagne imprimé pour vos créations et tenues.",
+    "images": ["/images/pagne-imprime.webp"],
+    "tailles": [],
+    "couleurs": ["Multicolore"],
+    "disponible": true,
+    "nouveaute": false
+  },
+  {
+    "id": "sac-elegant-01",
+    "nom": "Sac élégant",
+    "categorie": "accessoires",
+    "prix": 8000,
+    "description": "Un sac élégant pour accompagner vos sorties.",
+    "images": ["/images/sac-elegant.webp"],
+    "tailles": [],
+    "couleurs": ["Noir", "Beige"],
+    "disponible": true,
+    "nouveaute": false
+  }
+]

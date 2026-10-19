@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 60">
+  <path d="M12 42 Q12 34 30 34 Q48 34 48 42" fill="none" stroke="#E8B4BC" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M30 34 Q30 26 34 23 Q38 20 38 16 Q38 10 30 10 Q26 10 25 13" fill="none" stroke="#E8B4BC" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M12 42 Q18 54 30 56 Q42 54 48 42" fill="#F3E9DC" stroke="#E8B4BC" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M22 43 Q26 52 30 53 Q34 52 38 43" fill="#E8B4BC" stroke="none" opacity="0.7"/>
+  <ellipse cx="25" cy="12" rx="2.5" ry="4.5" fill="#E8B4BC" transform="rotate(-35 25 12)" opacity="0.9"/>
+  <ellipse cx="25" cy="12" rx="2.5" ry="4.5" fill="#E8B4BC" transform="rotate(25 25 12)" opacity="0.9"/>
+  <circle cx="25" cy="12" r="2.2" fill="#ffffff"/>
+  <circle cx="25" cy="12" r="1.1" fill="#E8B4BC"/>
+  <text x="62" y="34" font-family="Georgia,'Times New Roman',serif" font-size="22" font-weight="700" fill="#ffffff" letter-spacing="1.5">KANDE CHOP</text>
+  <text x="63" y="50" font-family="Georgia,'Times New Roman',serif" font-size="10" font-weight="400" font-style="italic" fill="#E8B4BC" letter-spacing="3">Alhamdulillah</text>
+</svg>

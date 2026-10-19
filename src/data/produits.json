@@ -44,7 +44,7 @@
     "images": ["/images/chaussures/chaussure-004.jpeg"],
     "tailles": ["36", "37", "38", "39", "40"],
     "couleurs": [],
-    "disponible": false,
+    "disponible": true,
     "nouveaute": false
   },
   {
@@ -116,7 +116,7 @@
     "images": ["/images/chaussures/chaussure-016.jpeg", "/images/chaussures/chaussure-017.jpeg"],
     "tailles": ["36", "37", "38", "39", "40"],
     "couleurs": [],
-    "disponible": false,
+    "disponible": true,
     "nouveaute": false
   },
   {
@@ -188,7 +188,7 @@
     "images": ["/images/voiles/voile-009.jpeg"],
     "tailles": [],
     "couleurs": [],
-    "disponible": false,
+    "disponible": true,
     "nouveaute": false
   },
   {

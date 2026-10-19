@@ -1,10 +1,43 @@
-/* Badge panier */
+/* ========================================
+   LOGO IMAGE
+   ======================================== */
+
+.logo-link {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logo-img {
+  display: block;
+  width: 130px;
+  height: auto;
+}
+
+/* Sur petits écrans, réduire légèrement le logo */
+@media (max-width: 650px) {
+  .logo-img {
+    width: 110px;
+  }
+}
+
+@media (max-width: 380px) {
+  .logo-img {
+    width: 90px;
+  }
+}
+
+/* ========================================
+   BADGE PANIER
+   ======================================== */
+
 .cart-link {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-brown);
+  color: #f0e7e2;
   font-size: 22px;
 }
 

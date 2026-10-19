@@ -26,8 +26,9 @@
   min-width: 0;
   overflow: hidden;
   border: 1px solid #eee2dc;
-  border-radius: 10px;
+  border-radius: var(--radius-card, 12px);
   background: #fff;
+  box-shadow: var(--shadow-card, 0 4px 16px rgba(90, 74, 66, 0.08));
 }
 
 .product-card-image {
@@ -38,6 +39,7 @@
   place-items: center;
   overflow: hidden;
   background: #f3e9dc;
+  border-radius: var(--radius-card, 12px) var(--radius-card, 12px) 0 0;
 }
 
 .product-card-image img {
@@ -96,13 +98,14 @@
   justify-content: center;
   gap: 7px;
   padding: 10px;
-  border-radius: 5px;
+  border-radius: 8px;
   background: #25d366;
   color: #173b25;
   text-align: center;
   text-decoration: none;
   font-size: 14px;
   font-weight: 600;
+  transition: background-color 0.2s ease;
 }
 
 .product-order-button:hover {
@@ -244,6 +247,7 @@
   border-color: #5a4a42;
   background: #5a4a42;
   color: #ffffff;
+  box-shadow: 0 2px 8px rgba(90, 74, 66, 0.2);
 }
 
 .catalog-results-count {

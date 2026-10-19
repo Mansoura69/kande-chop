@@ -136,6 +136,7 @@
   border-color: #5a4a42;
   background: #5a4a42;
   color: #ffffff;
+  box-shadow: 0 2px 8px rgba(90, 74, 66, 0.2);
 }
 
 /* Résultats */
@@ -345,4 +346,50 @@
 
 @media (prefers-reduced-motion: reduce) {
   .add-to-cart-button { transition: none; }
+}
+
+/* ========================================
+   ANIMATIONS CARTES PRODUITS
+   ======================================== */
+
+.product-card {
+  border-radius: var(--radius-card, 12px);
+  box-shadow: var(--shadow-card, 0 4px 16px rgba(90, 74, 66, 0.08));
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(90, 74, 66, 0.11);
+}
+
+.product-card-image {
+  border-radius: 12px 12px 0 0;
+}
+
+.product-card-image img {
+  transition: transform 0.4s ease;
+}
+
+.product-card:hover .product-card-image img {
+  transform: scale(1.06);
+}
+
+@keyframes badgePop {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.4); }
+  70%  { transform: scale(0.9); }
+  100% { transform: scale(1); }
+}
+
+.cart-badge--pop {
+  animation: badgePop 0.4s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .product-card { transition: none; }
+  .product-card:hover { transform: none; box-shadow: none; }
+  .product-card-image img { transition: none; }
+  .product-card:hover .product-card-image img { transform: none; }
+  .cart-badge--pop { animation: none; }
 }

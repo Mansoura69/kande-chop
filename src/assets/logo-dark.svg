@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 200" width="420" height="200">
+  <rect width="420" height="200" fill="#5A4A42" rx="12"/>
+
+  <g opacity="0.6">
+    <ellipse cx="38" cy="100" rx="5" ry="18" fill="#E8B4BC" transform="rotate(-20 38 100)"/>
+    <ellipse cx="30" cy="88" rx="4" ry="14" fill="#E8B4BC" transform="rotate(-50 30 88)"/>
+    <ellipse cx="28" cy="108" rx="4" ry="14" fill="#E8B4BC" transform="rotate(15 28 108)"/>
+    <ellipse cx="44" cy="82" rx="3.5" ry="12" fill="#d9a3ab" transform="rotate(-75 44 82)"/>
+    <ellipse cx="44" cy="118" rx="3.5" ry="12" fill="#d9a3ab" transform="rotate(55 44 118)"/>
+    <circle cx="38" cy="100" r="5" fill="#F3E9DC"/>
+  </g>
+
+  <g opacity="0.6">
+    <ellipse cx="382" cy="100" rx="5" ry="18" fill="#E8B4BC" transform="rotate(20 382 100)"/>
+    <ellipse cx="390" cy="88" rx="4" ry="14" fill="#E8B4BC" transform="rotate(50 390 88)"/>
+    <ellipse cx="392" cy="108" rx="4" ry="14" fill="#E8B4BC" transform="rotate(-15 392 108)"/>
+    <ellipse cx="376" cy="82" rx="3.5" ry="12" fill="#d9a3ab" transform="rotate(75 376 82)"/>
+    <ellipse cx="376" cy="118" rx="3.5" ry="12" fill="#d9a3ab" transform="rotate(-55 376 118)"/>
+    <circle cx="382" cy="100" r="5" fill="#F3E9DC"/>
+  </g>
+
+  <line x1="60" y1="42" x2="360" y2="42" stroke="#E8B4BC" stroke-width="1" opacity="0.5"/>
+  <circle cx="60" cy="42" r="2.5" fill="#E8B4BC" opacity="0.7"/>
+  <circle cx="360" cy="42" r="2.5" fill="#E8B4BC" opacity="0.7"/>
+  <circle cx="210" cy="42" r="2.5" fill="#E8B4BC" opacity="0.7"/>
+
+  <line x1="60" y1="158" x2="360" y2="158" stroke="#E8B4BC" stroke-width="1" opacity="0.5"/>
+  <circle cx="60" cy="158" r="2.5" fill="#E8B4BC" opacity="0.7"/>
+  <circle cx="360" cy="158" r="2.5" fill="#E8B4BC" opacity="0.7"/>
+  <circle cx="210" cy="158" r="2.5" fill="#E8B4BC" opacity="0.7"/>
+
+  <g transform="translate(189, 50)">
+    <path d="M21 0 Q21 6 14 8 Q7 6 7 0" fill="none" stroke="#F3E9DC" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M14 8 L6 14 L2 28 L26 28 L22 14 Z" fill="#443830" stroke="#F3E9DC" stroke-width="1.6" stroke-linejoin="round"/>
+    <path d="M2 28 L0 40 L28 40 L26 28 Z" fill="#E8B4BC" stroke="#F3E9DC" stroke-width="1.6" stroke-linejoin="round"/>
+    <line x1="4" y1="28" x2="24" y2="28" stroke="#F3E9DC" stroke-width="1.2" opacity="0.5"/>
+  </g>
+
+  <text x="210" y="108" text-anchor="middle"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="42" font-weight="700"
+    fill="#FFFFFF" letter-spacing="8">KANDE</text>
+
+  <text x="210" y="134" text-anchor="middle"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="22" font-weight="600"
+    fill="#E8B4BC" letter-spacing="14">CHOP</text>
+
+  <polygon points="210,142 214,146 210,150 206,146" fill="#E8B4BC" opacity="0.8"/>
+
+  <text x="210" y="160" text-anchor="middle"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="10" font-weight="400"
+    fill="#F3E9DC" letter-spacing="5">ALHAMDULILLAH</text>
+</svg>

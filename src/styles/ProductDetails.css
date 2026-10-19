@@ -25,7 +25,7 @@
   max-height: 420px;
   aspect-ratio: 4 / 5;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: var(--radius-card, 12px);
   background: #f3e9dc;
 }
 
@@ -53,8 +53,9 @@
   gap: 10px;
   padding: 20px;
   border: 1px solid #eee2dc;
-  border-radius: 10px;
+  border-radius: 14px;
   background: #fff;
+  box-shadow: var(--shadow-card, 0 4px 16px rgba(90, 74, 66, 0.08));
 }
 
 .order-form h2 {
@@ -120,24 +121,32 @@
 
 .send-order-button {
   display: flex;
-  min-height: 48px;
+  min-height: 50px;
   align-items: center;
   justify-content: center;
   gap: 10px;
   margin-top: 8px;
   padding: 12px 16px;
   border: 0;
-  border-radius: 5px;
+  border-radius: 8px;
   background: #25d366;
   color: #173b25;
   font: inherit;
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 15px;
   text-align: center;
   cursor: pointer;
+  transition: filter 0.2s ease;
 }
 
 .send-order-button:hover {
   filter: brightness(0.96);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .send-order-button {
+    transition: none;
+  }
 }
 
 @media (min-width: 768px) {

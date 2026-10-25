@@ -1,5 +1,5 @@
 /* ========================================
-   LOGO IMAGE
+   LOGO
    ======================================== */
 
 .logo-link {
@@ -15,7 +15,6 @@
   height: auto;
 }
 
-/* Sur petits écrans, réduire légèrement le logo */
 @media (max-width: 650px) {
   .logo-img {
     width: 110px;
@@ -58,4 +57,151 @@
   font-size: 11px;
   font-weight: 700;
   line-height: 1;
+}
+
+/* ========================================
+   BOUTON HAMBURGER — mobile uniquement
+   ======================================== */
+
+.hamburger-btn {
+  display: none; /* caché sur desktop */
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #f0e7e2;
+  font-size: 22px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.hamburger-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+/* ========================================
+   MENU DÉROULANT MOBILE
+   ======================================== */
+
+.mobile-menu {
+  /* Positionné en absolu sous le header sticky */
+  position: fixed;
+  top: var(--header-height);
+  left: 0;
+  right: 0;
+  z-index: 99;
+
+  display: flex;
+  flex-direction: column;
+
+  background: #5a4a42;
+  border-top: 1px solid #443830;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+
+  /* Animation d'ouverture */
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-8px);
+  pointer-events: none;
+  transition:
+    max-height 0.3s ease,
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+.mobile-menu--open {
+  max-height: 320px;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.mobile-menu-link {
+  display: flex;
+  align-items: center;
+  min-height: 56px;
+  padding: 0 24px;
+  color: #f0e7e2;
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.mobile-menu-link:last-child {
+  border-bottom: none;
+}
+
+.mobile-menu-link:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #e8b4bc;
+}
+
+.mobile-menu-link--active {
+  color: #e8b4bc;
+  font-weight: 700;
+  background: rgba(232, 180, 188, 0.1);
+}
+
+/* ========================================
+   AFFICHAGE RESPONSIVE
+   ======================================== */
+
+/* Sur desktop : hamburger caché, menu mobile caché, navbar visible */
+@media (min-width: 651px) {
+  .hamburger-btn {
+    display: none !important;
+  }
+
+  .mobile-menu {
+    display: none !important;
+  }
+
+  /* La navbar desktop est gérée dans global.css */
+}
+
+/* Sur mobile (≤650px) : navbar desktop cachée, hamburger visible */
+@media (max-width: 650px) {
+  /* Cacher la navbar desktop */
+  .navbar {
+    display: none !important;
+  }
+
+  /* Afficher le hamburger */
+  .hamburger-btn {
+    display: flex;
+  }
+
+  /* Afficher le menu déroulant (contrôlé par la classe JS) */
+  .mobile-menu {
+    display: flex;
+  }
+}
+
+/* ========================================
+   ACCESSIBILITÉ — reduced motion
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .hamburger-btn {
+    transition: none;
+  }
+
+  .mobile-menu {
+    transition: none;
+  }
+
+  .mobile-menu--open {
+    transform: none;
+  }
+
+  .mobile-menu-link {
+    transition: none;
+  }
 }

@@ -57,6 +57,7 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  overflow-x: hidden; /* Bloque tout débordement horizontal */
 }
 
 img,
@@ -237,30 +238,15 @@ h6 {
 @media (max-width: 650px) {
   :root {
     --page-gutter: 18px;
-    /* Sur mobile la navbar passe en dessous — hauteur totale plus grande */
-    --header-height: 108px;
+    /* Le header ne wrap plus (navbar masquée) — hauteur identique au desktop */
+    --header-height: 68px;
   }
 
   .header {
-    min-height: auto;
-    flex-wrap: wrap;
+    min-height: var(--header-height);
+    flex-wrap: nowrap;
     gap: 10px;
     padding: 10px 18px;
-  }
-
-  .navbar {
-    order: 3;
-    display: flex;
-    width: 100%;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 8px 16px;
-    padding-top: 6px;
-    padding-bottom: 4px;
-  }
-
-  .navbar a {
-    font-size: 13px;
   }
 
   .header-actions {
@@ -272,7 +258,7 @@ h6 {
   }
 
   .page-content {
-    padding: 44px 18px;
+    padding: 32px 14px;
   }
 }
 

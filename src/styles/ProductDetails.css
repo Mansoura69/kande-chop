@@ -165,7 +165,115 @@
   }
 }
 
+/* ========================================
+   MOBILE — Fiche produit
+   ======================================== */
+
+@media (max-width: 639px) {
+  .order-page {
+    padding: 16px 14px 40px;
+  }
+
+  /* Titre produit : plancher abaissé */
+  .order-product h1 {
+    font-size: clamp(22px, 7vw, 32px);
+    margin: 6px 0;
+  }
+
+  .order-price {
+    font-size: 18px;
+  }
+
+  .order-product > p:last-child {
+    font-size: 14px;
+  }
+
+  /* Formulaire */
+  .order-form {
+    padding: 16px;
+    gap: 8px;
+  }
+
+  .order-form h2 {
+    font-size: 20px;
+  }
+
+  .order-form > p {
+    font-size: 13px;
+  }
+
+  .order-form label {
+    font-size: 14px;
+    margin-top: 4px;
+  }
+
+  .order-form input,
+  .order-form select,
+  .order-form textarea {
+    min-height: 44px;
+    padding: 10px;
+    font-size: 16px; /* Garde 16px pour éviter le zoom iOS */
+  }
+
+  .order-total {
+    font-size: 14px;
+    margin-top: 10px;
+    padding: 12px 0;
+  }
+
+  .order-total strong {
+    font-size: 17px;
+  }
+
+  .delivery-note {
+    font-size: 12px;
+  }
+
+  .send-order-button {
+    min-height: 46px;
+    font-size: 14px;
+  }
+}
+
 .add-to-cart-button--details {
   width: 100%;
   margin-top: 16px;
+}
+
+/* ----------------------------------------
+   Animations — image produit
+   ---------------------------------------- */
+
+/* Zoom léger au survol de l'image produit */
+.order-product img {
+  transition: transform 0.4s ease;
+  will-change: transform;
+}
+
+.order-product img:hover {
+  transform: scale(1.03);
+}
+
+/* Retour visuel sur les selects de taille / couleur */
+.order-form select:focus,
+.order-form select:focus-visible {
+  outline: 2px solid #e8b4bc;
+  outline-offset: 2px;
+  border-color: #9b6470;
+  transition: border-color 0.2s ease, outline 0.2s ease;
+}
+
+/* Highlight option sélectionnée dans les inputs */
+.order-form input:not([type="number"]):not([type="tel"]):valid {
+  border-color: #b8d4b0;
+  transition: border-color 0.3s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .order-product img {
+    transition: none;
+  }
+  .order-product img:hover {
+    transform: none;
+  }
 }

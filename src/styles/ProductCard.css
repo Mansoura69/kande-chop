@@ -212,31 +212,82 @@
     margin-bottom: 28px;
   }
 
+  .catalog-heading h1 {
+    font-size: clamp(22px, 7vw, 32px);
+  }
+
   .catalog-heading > p:last-child {
-    font-size: 14px;
+    font-size: 13px;
   }
 
   .catalog-tools {
-    gap: 18px;
-    margin-bottom: 28px;
+    gap: 14px;
+    margin-bottom: 20px;
   }
 
   .category-filters {
     justify-content: flex-start;
-    gap: 8px;
+    gap: 6px;
   }
 
   .category-filter {
-    padding: 8px 12px;
+    padding: 7px 11px;
     font-size: 12px;
+    min-height: 36px;
   }
 
   .product-grid {
-    gap: 12px;
+    gap: 10px;
   }
 
   .catalog-results-count {
-    margin-bottom: 16px;
+    margin-bottom: 14px;
+    font-size: 13px;
+  }
+
+  /* Carte produit sur mobile */
+  .product-card-content {
+    padding: 10px;
+  }
+
+  .product-card-content h2 {
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+
+  .product-price {
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+
+  .add-to-cart-button {
+    font-size: 12px;
+    min-height: 38px;
+    gap: 5px;
+    padding: 7px 8px;
+    margin-bottom: 6px;
+  }
+
+  .product-order-button {
+    font-size: 12px;
+    min-height: 38px;
+    gap: 5px;
+    padding: 7px 8px;
+  }
+
+  /* Sections catégories du catalogue */
+  .catalog-category-title {
+    font-size: clamp(17px, 5vw, 22px);
+  }
+
+  .catalog-category-section {
+    margin-bottom: 32px;
+  }
+
+  .voir-plus-button {
+    font-size: 13px;
+    padding: 9px 20px;
+    min-height: 40px;
   }
 }
 

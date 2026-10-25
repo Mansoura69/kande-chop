@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   FiShoppingCart,
@@ -22,6 +23,23 @@ function Cart() {
     supprimerDuPanier,
     viderLePanier,
   } = useCart();
+
+  // IDs des articles en cours de suppression (animation en cours)
+  const [supprimant, setSupprimant] = useState(new Set());
+
+  function handleSupprimer(id) {
+    // Démarre l'animation de sortie
+    setSupprimant((prev) => new Set(prev).add(id));
+    // Supprime réellement après la durée de l'animation (280ms)
+    setTimeout(() => {
+      supprimerDuPanier(id);
+      setSupprimant((prev) => {
+        const next = new Set(prev);
+        next.delete(id);
+        return next;
+      });
+    }, 280);
+  }
 
   function envoyerCommandeGroupee() {
     if (lignes.length === 0) return;
@@ -90,8 +108,12 @@ function Cart() {
         <section className="cart-items" aria-label="Articles dans le panier">
           {lignes.map((ligne) => {
             const sousTotal = ligne.prix * ligne.quantite;
+            const enSuppression = supprimant.has(ligne.id);
             return (
-              <article key={ligne.id} className="cart-item">
+              <article
+                key={ligne.id}
+                className={`cart-item${enSuppression ? " cart-item--removing" : ""}`}
+              >
                 <div className="cart-item-image">
                   {ligne.image && (
                     <img
@@ -145,7 +167,7 @@ function Cart() {
                     <button
                       type="button"
                       className="cart-remove-btn"
-                      onClick={() => supprimerDuPanier(ligne.id)}
+                      onClick={() => handleSupprimer(ligne.id)}
                       aria-label={`Supprimer ${ligne.nom} du panier`}
                     >
                       <FiTrash2 />
@@ -199,7 +221,7 @@ function Cart() {
 
           <button
             type="button"
-            className="cart-whatsapp-btn"
+            className="cart-whatsapp-btn whatsapp-pulse"
             onClick={envoyerCommandeGroupee}
           >
             <FiMessageCircle />

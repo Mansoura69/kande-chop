@@ -105,6 +105,8 @@
   border: 1px solid #eadbd3;
   border-radius: var(--radius-card, 12px);
   background: #ffffff;
+  /* Entrée progressive */
+  animation: fadeUp 0.35s ease both;
 }
 
 .cart-item-image {
@@ -392,7 +394,8 @@
 @media (max-width: 380px) {
   .cart-item {
     grid-template-columns: 72px 1fr;
-    gap: 12px;
+    gap: 10px;
+    padding: 12px;
   }
 
   .cart-item-image {
@@ -402,7 +405,81 @@
 
   .cart-item-subtotal {
     margin-left: 0;
+    font-size: 13px;
+  }
+
+  .cart-item-name {
     font-size: 14px;
+  }
+}
+
+/* ========================================
+   MOBILE GÉNÉRAL — Panier (< 640px)
+   ======================================== */
+
+@media (max-width: 639px) {
+  .cart-page {
+    padding: 20px 14px 48px;
+  }
+
+  .cart-title {
+    font-size: clamp(22px, 7vw, 32px);
+  }
+
+  .cart-count {
+    font-size: 13px;
+  }
+
+  .cart-header {
+    margin-bottom: 20px;
+    gap: 10px;
+  }
+
+  .cart-item {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .cart-item-name {
+    font-size: 15px;
+  }
+
+  .cart-item-price {
+    font-size: 12px;
+    margin-bottom: 8px;
+  }
+
+  .cart-item-subtotal {
+    font-size: 14px;
+  }
+
+  /* Les contrôles passent en dessous si l'espace est insuffisant */
+  .cart-item-controls {
+    gap: 8px;
+  }
+
+  .cart-summary {
+    padding: 18px 16px;
+  }
+
+  .cart-summary-title {
+    font-size: 19px;
+    margin-bottom: 14px;
+  }
+
+  .cart-summary-total strong {
+    font-size: 17px;
+  }
+
+  .cart-whatsapp-btn {
+    min-height: 46px;
+    font-size: 14px;
+  }
+
+  .cart-actions-secondary {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
   }
 }
 
@@ -411,4 +488,13 @@
   .cart-remove-btn,
   .cart-whatsapp-btn,
   .cart-discover-button { transition: none; }
+
+  .cart-item {
+    animation: none;
+  }
+
+  .cart-item--removing {
+    animation: none;
+    opacity: 0;
+  }
 }

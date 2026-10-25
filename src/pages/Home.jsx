@@ -1,22 +1,215 @@
 import { Link } from "react-router-dom";
+import { useState, useEffect, useRef, useCallback } from "react";
 import {
   FiArrowRight,
+  FiArrowLeft,
   FiTruck,
   FiHeart,
   FiMessageCircle,
   FiShield,
 } from "react-icons/fi";
-import heroPic from "../assets/Ac.jpg";
 import produits from "../data/produits.json";
 import ProductCard from "../components/ProductCard";
 import { useReveal } from "../utils/useReveal";
+import { useGridReveal } from "../utils/useGridReveal";
 import "../styles/Home.css";
 
-/* -------------------------------------------------------
-   Avis clients — données de démonstration.
-   À remplacer par de vrais témoignages avec l'accord
-   des personnes concernées avant publication.
-   ------------------------------------------------------- */
+// ── Images du carrousel ──────────────────────────────────────────
+import slide1 from "../assets/IMG/1147855023792558667.jpg";
+import slide2 from "../assets/IMG/861876447475653872.jpg";
+import slide3 from "../assets/IMG/Elegant Kimono Fashion Style.jpg";
+import slide4 from "../assets/IMG/Step in Style.jpg";
+
+const DIAPOSITIVES = [
+  {
+    id: 1,
+    image: slide1,
+    alt: "Collection KANDE CHOP — élégance au quotidien",
+    titre: "Votre style, votre signature.",
+    sousTitre: "Des pièces choisies pour révéler votre élégance.",
+  },
+  {
+    id: 2,
+    image: slide2,
+    alt: "Collection KANDE CHOP — qualité et confiance",
+    titre: "La qualité fait la différence.",
+    sousTitre:
+      "Choisissez vos pièces avec confiance et profitez d'un style qui vous ressemble.",
+  },
+  {
+    id: 3,
+    image: slide3,
+    alt: "Collection KANDE CHOP — style et personnalité",
+    titre: "Affirmez votre style.",
+    sousTitre:
+      "Des articles qui mettent en valeur votre personnalité, en toute simplicité.",
+  },
+  {
+    id: 4,
+    image: slide4,
+    alt: "Collection KANDE CHOP — découvrir la boutique",
+    titre: "Trouvez votre prochain coup de cœur.",
+    sousTitre: "Explorez notre catalogue et choisissez vos pièces préférées.",
+  },
+];
+
+const DUREE_AUTO = 5000;
+
+// ── Composant carrousel ──────────────────────────────────────────
+function HeroCarousel() {
+  const [actif, setActif] = useState(0);
+  const [enTransition, setEnTransition] = useState(false);
+  const timerRef = useRef(null);
+  const touchStartX = useRef(null);
+  const total = DIAPOSITIVES.length;
+
+  const reduceMotion =
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const allerA = useCallback(
+    (index) => {
+      if (enTransition) return;
+      setEnTransition(true);
+      setTimeout(
+        () => {
+          setActif(index);
+          setEnTransition(false);
+        },
+        reduceMotion ? 0 : 400
+      );
+    },
+    [enTransition, reduceMotion]
+  );
+
+  const suivant = useCallback(() => {
+    allerA((actif + 1) % total);
+  }, [actif, total, allerA]);
+
+  const precedent = useCallback(() => {
+    allerA((actif - 1 + total) % total);
+  }, [actif, total, allerA]);
+
+  // Auto-play
+  useEffect(() => {
+    if (reduceMotion) return;
+    timerRef.current = setTimeout(suivant, DUREE_AUTO);
+    return () => clearTimeout(timerRef.current);
+  }, [actif, suivant, reduceMotion]);
+
+  // Swipe tactile
+  function handleTouchStart(e) {
+    touchStartX.current = e.touches[0].clientX;
+  }
+  function handleTouchEnd(e) {
+    if (touchStartX.current === null) return;
+    const delta = e.changedTouches[0].clientX - touchStartX.current;
+    touchStartX.current = null;
+    if (Math.abs(delta) < 40) return;
+    clearTimeout(timerRef.current);
+    if (delta < 0) suivant();
+    else precedent();
+  }
+
+  const diapo = DIAPOSITIVES[actif];
+
+  return (
+    <section
+      className="hero-carousel"
+      aria-label="Carrousel principal"
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
+      {/* Slides */}
+      <div className="hero-carousel-track" aria-live="polite">
+        {DIAPOSITIVES.map((slide, i) => (
+          <div
+            key={slide.id}
+            className={`hero-slide${i === actif ? " hero-slide--active" : ""}${
+              enTransition && i === actif ? " hero-slide--exit" : ""
+            }`}
+            aria-hidden={i !== actif}
+          >
+            {/* Fond flouté — même image agrandie, comble les espaces latéraux */}
+            <img
+              src={slide.image}
+              alt=""
+              className="hero-slide-bg"
+              aria-hidden="true"
+              loading={i === 0 ? "eager" : "lazy"}
+            />
+            {/* Image principale nette — contain, proportions préservées */}
+            <img
+              src={slide.image}
+              alt={slide.alt}
+              className="hero-slide-img"
+              loading={i === 0 ? "eager" : "lazy"}
+            />
+            <div className="hero-slide-overlay" />
+          </div>
+        ))}
+      </div>
+
+      {/* Texte */}
+      <div
+        className={`hero-caption${
+          enTransition ? " hero-caption--exit" : " hero-caption--enter"
+        }`}
+      >
+        <p className="eyebrow">KANDE CHOP ALHAMDULILLAH</p>
+        <h1 className="hero-caption-titre">{diapo.titre}</h1>
+        <p className="hero-caption-sous-titre">{diapo.sousTitre}</p>
+        <Link to="/catalogue" className="hero-caption-btn">
+          Découvrir la collection <FiArrowRight />
+        </Link>
+      </div>
+
+      {/* Flèches */}
+      <button
+        type="button"
+        className="hero-arrow hero-arrow--prev"
+        onClick={() => {
+          clearTimeout(timerRef.current);
+          precedent();
+        }}
+        aria-label="Diapositive précédente"
+      >
+        <FiArrowLeft />
+      </button>
+      <button
+        type="button"
+        className="hero-arrow hero-arrow--next"
+        onClick={() => {
+          clearTimeout(timerRef.current);
+          suivant();
+        }}
+        aria-label="Diapositive suivante"
+      >
+        <FiArrowRight />
+      </button>
+
+      {/* Points indicateurs */}
+      <div className="hero-dots" role="tablist" aria-label="Diapositives">
+        {DIAPOSITIVES.map((slide, i) => (
+          <button
+            key={slide.id}
+            type="button"
+            role="tab"
+            className={`hero-dot${i === actif ? " hero-dot--active" : ""}`}
+            aria-label={`Aller à la diapositive ${i + 1}`}
+            aria-selected={i === actif}
+            onClick={() => {
+              clearTimeout(timerRef.current);
+              allerA(i);
+            }}
+          />
+        ))}
+      </div>
+    </section>
+  );
+}
+
+/* ── Données de démonstration — avis clients ──────────────────── */
 const avisClients = [
   {
     id: 1,
@@ -79,19 +272,6 @@ const categories = [
   },
 ];
 
-function HeroVisual() {
-  return (
-    <div className="hero-visual" aria-hidden="true">
-      <div className="hero-circle" />
-      <img
-        src={heroPic}
-        alt=""
-        className="hero-photo"
-      />
-    </div>
-  );
-}
-
 function Home() {
   const nouveautes = produits
     .filter((produit) => produit.nouveaute && produit.disponible)
@@ -101,34 +281,14 @@ function Home() {
   const newProductsRef = useReveal();
   const benefitsRef = useReveal();
   const avisRef = useReveal();
+  const nouveautesGridRef = useGridReveal();
 
   return (
     <main className="home-page">
-      <section className="home-hero">
-        <div className="home-hero-content">
-          <p className="eyebrow">KANDE CHOP ALHAMDULILLAH</p>
+      {/* ── Carrousel hero ── */}
+      <HeroCarousel />
 
-          <h1>
-            Votre élégance,
-            <br />
-            <span>notre passion.</span>
-          </h1>
-
-          <p className="home-hero-description">
-            Découvrez une sélection de chaussures, voiles, pagnes et accessoires
-            choisis avec soin pour sublimer votre style.
-          </p>
-
-          <p className="home-hero-blessing">Alhamdulillah.</p>
-
-          <Link to="/catalogue" className="home-hero-button">
-            Découvrir la boutique <FiArrowRight />
-          </Link>
-        </div>
-
-        <HeroVisual />
-      </section>
-
+      {/* ── Catégories ── */}
       <section className="home-categories reveal" ref={categoriesRef}>
         <div className="home-section-heading">
           <p className="eyebrow">NOTRE SÉLECTION</p>
@@ -154,7 +314,11 @@ function Home() {
         </div>
       </section>
 
-      <section className="home-new-products reveal reveal-delay-1" ref={newProductsRef}>
+      {/* ── Nouveautés ── */}
+      <section
+        className="home-new-products reveal reveal-delay-1"
+        ref={newProductsRef}
+      >
         <div className="home-section-heading">
           <p className="eyebrow">À DÉCOUVRIR</p>
           <h2>Nos nouveautés</h2>
@@ -162,7 +326,7 @@ function Home() {
         </div>
 
         {nouveautes.length > 0 ? (
-          <div className="product-grid">
+          <div ref={nouveautesGridRef} className="product-grid grid-animate">
             {nouveautes.map((produit) => (
               <ProductCard key={produit.id} produit={produit} />
             ))}
@@ -180,6 +344,7 @@ function Home() {
         </div>
       </section>
 
+      {/* ── Avantages ── */}
       <section className="home-benefits reveal" ref={benefitsRef}>
         <div className="home-section-heading">
           <p className="eyebrow">VOTRE SATISFACTION</p>
@@ -213,7 +378,7 @@ function Home() {
         </div>
       </section>
 
-      {/* ---- Section avis clients ---- */}
+      {/* ── Avis clients ── */}
       <section className="home-reviews reveal" ref={avisRef}>
         <div className="home-section-heading">
           <p className="eyebrow">TÉMOIGNAGES</p>
@@ -224,7 +389,10 @@ function Home() {
         <div className="home-reviews-grid">
           {avisClients.map((avis) => (
             <article key={avis.id} className="review-card">
-              <div className="review-stars" aria-label={`${avis.note} étoiles sur 5`}>
+              <div
+                className="review-stars"
+                aria-label={`${avis.note} étoiles sur 5`}
+              >
                 {"★".repeat(avis.note)}
               </div>
               <p className="review-comment">« {avis.commentaire} »</p>

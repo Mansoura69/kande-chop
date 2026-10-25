@@ -65,7 +65,7 @@ function ProductCard({ produit }) {
         {/* Lien vers la fiche produit pour commande directe WhatsApp */}
         <Link
           to={`/produit/${produit.id}`}
-          className="product-order-button"
+          className="product-order-button whatsapp-pulse"
           aria-label={`Commander ${produit.nom} par WhatsApp`}
           onClick={(event) => {
             if (!produit.disponible) {

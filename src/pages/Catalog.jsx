@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import produits from "../data/produits.json";
 import ProductCard from "../components/ProductCard";
 import { FiSearch, FiX } from "react-icons/fi";
+import { useGridReveal } from "../utils/useGridReveal";
 import "../styles/Catalog.css";
 
 const categories = [
@@ -33,6 +34,25 @@ function normaliser(texte) {
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
     .trim();
+}
+
+/**
+ * Grille animée en cascade — s'auto-observe dès le mount.
+ * La prop `animKey` force un re-mount (et donc rejoue l'animation)
+ * quand la recherche ou le filtre change.
+ */
+function AnimatedGrid({ children, label, animKey }) {
+  const ref = useGridReveal();
+  return (
+    <div
+      key={animKey}
+      ref={ref}
+      className="product-grid grid-animate"
+      aria-label={label}
+    >
+      {children}
+    </div>
+  );
 }
 
 function Catalog() {
@@ -153,11 +173,14 @@ function Catalog() {
           </p>
 
           {produitsFiltres.length > 0 ? (
-            <div className="product-grid" aria-label="Liste des produits">
+            <AnimatedGrid
+              label="Liste des produits"
+              animKey={`${recherche}-${categorieActive}`}
+            >
               {produitsFiltres.map((produit) => (
                 <ProductCard key={produit.id} produit={produit} />
               ))}
-            </div>
+            </AnimatedGrid>
           ) : (
             <div className="catalog-empty">
               <h2>Aucun produit trouvé</h2>
@@ -198,14 +221,14 @@ function Catalog() {
                     {LIBELLES_CATEGORIES[cat] ?? cat}
                   </h2>
                 </div>
-                <div
-                  className="product-grid"
-                  aria-label={`Produits : ${LIBELLES_CATEGORIES[cat] ?? cat}`}
+                <AnimatedGrid
+                  label={`Produits : ${LIBELLES_CATEGORIES[cat] ?? cat}`}
+                  animKey={`cat-${cat}-${estDeveloppe}`}
                 >
                   {produitsCategorieVisibles.map((produit) => (
                     <ProductCard key={produit.id} produit={produit} />
                   ))}
-                </div>
+                </AnimatedGrid>
                 {categorieAPlus && (
                   <div className="catalog-voir-plus-wrapper">
                     <button

@@ -113,7 +113,7 @@ function ProductDetails() {
       </Link>
 
       <section className="order-layout">
-        <div className="order-product">
+        <div className="order-product order-product-animate">
           <img
             src={produit.images?.[0]}
             alt={produit.nom}
@@ -143,7 +143,7 @@ function ProductDetails() {
           <p>{produit.description}</p>
         </div>
 
-        <form className="order-form" onSubmit={envoyerCommande}>
+        <form className="order-form order-form-animate" onSubmit={envoyerCommande}>
           <h2>Formulaire de commande</h2>
           <p>Remplissez vos informations pour commander cet article.</p>
 
@@ -269,7 +269,7 @@ function ProductDetails() {
             Les frais de livraison seront confirmés par la vendeuse.
           </p>
 
-          <button type="submit" className="send-order-button">
+          <button type="submit" className="send-order-button whatsapp-pulse">
             <FiMessageCircle />
             Envoyer ma commande sur WhatsApp
           </button>

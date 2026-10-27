@@ -344,6 +344,8 @@
   font-size: 15px;
   font-weight: 700;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   cursor: pointer;
   transition: filter 0.2s ease;
 }
@@ -474,8 +476,10 @@
 
   .cart-whatsapp-btn {
     min-height: 46px;
-    font-size: 14px;
+    font-size: 13px;
     white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .cart-actions-secondary {
@@ -485,9 +489,12 @@
   }
 
   .cart-discover-button {
-    font-size: 14px;
+    font-size: 13px;
     padding: 9px 16px;
     min-height: 42px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 

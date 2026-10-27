@@ -136,6 +136,8 @@
   font-size: 15px;
   text-align: center;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   cursor: pointer;
   transition: filter 0.2s ease;
 }
@@ -232,8 +234,10 @@
 
   .send-order-button {
     min-height: 46px;
-    font-size: 14px;
+    font-size: 13px;
     white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 

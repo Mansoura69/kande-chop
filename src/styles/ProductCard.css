@@ -261,20 +261,24 @@
   }
 
   .add-to-cart-button {
-    font-size: 12px;
-    min-height: 38px;
-    gap: 5px;
-    padding: 7px 8px;
+    font-size: 11px;
+    min-height: 36px;
+    gap: 4px;
+    padding: 6px 6px;
     margin-bottom: 6px;
     white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .product-order-button {
-    font-size: 12px;
-    min-height: 38px;
-    gap: 5px;
-    padding: 7px 8px;
+    font-size: 11px;
+    min-height: 36px;
+    gap: 4px;
+    padding: 6px 6px;
     white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   /* Sections catégories du catalogue */
@@ -378,6 +382,8 @@
   font-size: 14px;
   font-weight: 600;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   cursor: pointer;
   transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }

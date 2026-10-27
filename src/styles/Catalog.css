@@ -105,6 +105,7 @@
   text-decoration: none;
   font-size: 14px;
   font-weight: 600;
+  white-space: nowrap;
   transition: background-color 0.2s ease;
 }
 
@@ -298,6 +299,36 @@
     flex-wrap: wrap;
     justify-content: center;
     overflow-x: visible;
+  }
+}
+
+/* Mobile — filtres et recherche */
+@media (max-width: 639px) {
+  .catalog-search {
+    min-height: 46px;
+  }
+
+  .catalog-search input {
+    min-height: 42px;
+    font-size: 16px; /* conservé pour éviter le zoom iOS */
+  }
+
+  .category-filter {
+    min-height: 38px;
+    padding: 8px 13px;
+    font-size: 13px;
+  }
+
+  .voir-plus-button {
+    min-height: 40px;
+    font-size: 13px;
+    padding: 9px 20px;
+  }
+
+  .reset-filters-button {
+    min-height: 40px;
+    font-size: 14px;
+    padding: 8px 16px;
   }
 }
 

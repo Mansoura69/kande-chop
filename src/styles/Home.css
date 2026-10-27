@@ -779,9 +779,10 @@
   .home-all-products { margin-top: 20px; }
 
   .home-secondary-button {
-    min-height: 46px;
-    font-size: 14px;
-    padding: 11px 16px;
+    min-height: 42px;
+    font-size: 13px;
+    padding: 9px 14px;
+    white-space: nowrap;
   }
 
   .home-benefit { padding: 20px 16px; }
@@ -792,6 +793,42 @@
   .review-card { padding: 18px 16px; gap: 10px; }
   .review-comment { font-size: 13px; }
   .review-stars   { font-size: 16px; }
+}
+
+/* ========================================
+   TRÈS PETITS MOBILES (≤ 380px)
+   ======================================== */
+
+@media (max-width: 380px) {
+  .hero-caption-titre {
+    font-size: clamp(18px, 6vw, 24px);
+  }
+
+  .hero-caption-sous-titre {
+    display: none; /* sous-titre masqué sur très petit écran */
+  }
+
+  .hero-caption-btn {
+    min-height: 40px;
+    font-size: 12px;
+    padding: 8px 14px;
+  }
+
+  .home-secondary-button {
+    font-size: 12px;
+    padding: 8px 12px;
+    min-height: 40px;
+  }
+
+  .home-category-card {
+    min-height: 72px;
+    padding: 12px 12px;
+    gap: 10px;
+  }
+
+  .home-category-card h3 { font-size: 15px; }
+  .home-category-card p  { font-size: 11px; }
+  .category-number { width: 34px; height: 34px; font-size: 11px; }
 }
 
 /* ========================================

@@ -260,6 +260,22 @@ h6 {
   .page-content {
     padding: 32px 14px;
   }
+
+  /* Bouton commun primary : plus compact sur mobile */
+  .primary-button {
+    min-height: 44px;
+    font-size: 14px;
+    padding: 10px 18px;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .primary-button {
+    min-height: 42px;
+    font-size: 13px;
+    padding: 9px 14px;
+  }
 }
 
 /* ========================================

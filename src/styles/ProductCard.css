@@ -266,6 +266,7 @@
     gap: 5px;
     padding: 7px 8px;
     margin-bottom: 6px;
+    white-space: nowrap;
   }
 
   .product-order-button {
@@ -273,6 +274,7 @@
     min-height: 38px;
     gap: 5px;
     padding: 7px 8px;
+    white-space: nowrap;
   }
 
   /* Sections catégories du catalogue */
@@ -375,6 +377,7 @@
   font: inherit;
   font-size: 14px;
   font-weight: 600;
+  white-space: nowrap;
   cursor: pointer;
   transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }

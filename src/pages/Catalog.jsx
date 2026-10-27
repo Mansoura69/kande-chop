@@ -26,7 +26,7 @@ const LIBELLES_CATEGORIES = {
   sacs: "Sacs",
 };
 
-const LIMITE_INITIALE = 4;
+const LIMITE_INITIALE = 3;
 
 function normaliser(texte) {
   return texte
@@ -41,11 +41,10 @@ function normaliser(texte) {
  * La prop `animKey` force un re-mount (et donc rejoue l'animation)
  * quand la recherche ou le filtre change.
  */
-function AnimatedGrid({ children, label, animKey }) {
+function AnimatedGrid({ children, label }) {
   const ref = useGridReveal();
   return (
     <div
-      key={animKey}
       ref={ref}
       className="product-grid grid-animate"
       aria-label={label}
@@ -174,8 +173,8 @@ function Catalog() {
 
           {produitsFiltres.length > 0 ? (
             <AnimatedGrid
+              key={`${recherche}-${categorieActive}`}
               label="Liste des produits"
-              animKey={`${recherche}-${categorieActive}`}
             >
               {produitsFiltres.map((produit) => (
                 <ProductCard key={produit.id} produit={produit} />
@@ -222,8 +221,8 @@ function Catalog() {
                   </h2>
                 </div>
                 <AnimatedGrid
+                  key={`cat-${cat}-${estDeveloppe}`}
                   label={`Produits : ${LIBELLES_CATEGORIES[cat] ?? cat}`}
-                  animKey={`cat-${cat}-${estDeveloppe}`}
                 >
                   {produitsCategorieVisibles.map((produit) => (
                     <ProductCard key={produit.id} produit={produit} />
